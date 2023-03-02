@@ -11,6 +11,9 @@
 
     <artifactId>orden-dominio</artifactId>
     <packaging>pom</packaging>
+    <properties>
+
+    </properties>
     <modules>
         <module>orden-dominio-nucleo</module>
         <module>orden-dominio-aplicacion</module>

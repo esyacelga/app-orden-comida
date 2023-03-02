@@ -3,13 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
-       <parent>
-           <artifactId>spring-boot-starter-parent</artifactId>
-           <groupId>org.springframework.boot</groupId>
-           <version>2.6.3</version>
-           <relativePath/>
-       </parent>
+    <modules>
+        <module>orden-servicio</module>
+    </modules>
+    <parent>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <version>2.6.3</version>
+        <relativePath/>
+    </parent>
 
     <groupId>com.orden.comida.app</groupId>
     <artifactId>orden-comida-app</artifactId>
@@ -22,14 +24,49 @@
         <maven-compiler-plugin.version>3.9.0</maven-compiler-plugin.version>
     </properties>
 
-    <dependencyManagement></dependencyManagement>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.orden.comida</groupId>
+                <artifactId>orden-dominio-nucleo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.orden.comida</groupId>
+                <artifactId>orden-acceso-bd</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.orden.comida</groupId>
+                <artifactId>orden-aplicacion-capa</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>com.orden.comida</groupId>
+                <artifactId>orden-dominio-aplicacion</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.orden.comida</groupId>
+                <artifactId>orden-mensajeria</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
     <dependencies></dependencies>
+
     <build>
+
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>19</source>
                     <target>19</target>

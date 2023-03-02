@@ -10,11 +10,11 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>orden-dominio</module>
-        <module>orden-aplicacion-capa</module>
         <module>orden-acceso-bd</module>
+        <module>orden-aplicacion-capa</module>
         <module>orden-mensajeria</module>
         <module>orden-contenedor</module>
+        <module>orden-dominio</module>
     </modules>
 
 

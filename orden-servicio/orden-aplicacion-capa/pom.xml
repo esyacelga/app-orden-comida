@@ -12,5 +12,12 @@
     <description>Capa de comunicacion con el cliente</description>
     <artifactId>orden-aplicacion-capa</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.orden.comida</groupId>
+            <artifactId>orden-dominio-aplicacion</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

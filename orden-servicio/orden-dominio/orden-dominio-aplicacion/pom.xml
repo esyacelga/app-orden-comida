@@ -10,6 +10,13 @@
     </parent>
 
     <artifactId>orden-dominio-aplicacion</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>com.orden.comida</groupId>
+            <artifactId>orden-dominio-nucleo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

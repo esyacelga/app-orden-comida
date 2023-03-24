@@ -1,10 +1,9 @@
 package com.orden.comida.app.dominio.entidad;
 
-import com.orden.comida.app.dominio.objetovalor.DireccionCalle;
-import com.orden.comida.app.dominio.objetovalor.IDSeguimiento;
 import com.orden.comida.app.dominio.objetovalor.*;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Orden extends RaizAgregada<IDOrden> {
     private final IDCliente idCliente;
@@ -15,6 +14,17 @@ public class Orden extends RaizAgregada<IDOrden> {
     private IDSeguimiento idSeguimiento;
     private EstadoOrden estadoOrden;
     private List<String> mensajesError;
+
+    public void incializeOrder() {
+        setId(new IDOrden(UUID.randomUUID()));
+        idSeguimiento = new IDSeguimiento(UUID.randomUUID());
+        estadoOrden = EstadoOrden.PENDIENTE;
+        inicializadorOrdenItems();
+    }
+
+    private void inicializadorOrdenItems() {
+
+    }
 
     private Orden(Builder builder) {
         super.setId(builder.idOrden);
@@ -32,7 +42,6 @@ public class Orden extends RaizAgregada<IDOrden> {
     public IDCliente getIdCliente() {
         return idCliente;
     }
-
 
 
     public IDRestaurante getIdRestaurante() {

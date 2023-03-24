@@ -1,10 +1,8 @@
-package com.comida.ordenando.sistema.ordernservicio.dominio.entidad;
+package com.orden.comida.app.dominio.entidad;
 
-import com.comida.ordenando.sistema.ordernservicio.dominio.objetovalor.DireccionCalle;
-import com.comida.ordenando.sistema.ordernservicio.dominio.objetovalor.IDSeguimiento;
-import com.orden.comida.app.dominio.entidad.RaizAgregada;
+import com.orden.comida.app.dominio.objetovalor.DireccionCalle;
+import com.orden.comida.app.dominio.objetovalor.IDSeguimiento;
 import com.orden.comida.app.dominio.objetovalor.*;
-import jdk.jfr.snippets.Snippets;
 
 import java.util.List;
 

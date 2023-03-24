@@ -1,4 +1,4 @@
-package com.comida.ordenando.sistema.ordernservicio.dominio.objetovalor;
+package com.orden.comida.app.dominio.objetovalor;
 
 import com.orden.comida.app.dominio.objetovalor.IDBase;
 

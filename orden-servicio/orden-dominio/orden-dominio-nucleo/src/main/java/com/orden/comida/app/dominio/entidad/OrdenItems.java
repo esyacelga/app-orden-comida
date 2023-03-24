@@ -1,7 +1,6 @@
-package com.comida.ordenando.sistema.ordernservicio.dominio.entidad;
+package com.orden.comida.app.dominio.entidad;
 
-import com.comida.ordenando.sistema.ordernservicio.dominio.objetovalor.IDOrdenItem;
-import com.orden.comida.app.dominio.entidad.EntidadBase;
+import com.orden.comida.app.dominio.objetovalor.IDOrdenItem;
 import com.orden.comida.app.dominio.objetovalor.IDOrden;
 import com.orden.comida.app.dominio.objetovalor.Moneda;
 

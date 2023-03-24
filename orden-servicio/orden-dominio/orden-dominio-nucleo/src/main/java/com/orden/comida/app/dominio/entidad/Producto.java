@@ -1,4 +1,4 @@
-package com.comida.ordenando.sistema.ordernservicio.dominio.entidad;
+package com.orden.comida.app.dominio.entidad;
 
 import com.orden.comida.app.dominio.entidad.EntidadBase;
 import com.orden.comida.app.dominio.objetovalor.IDProducto;

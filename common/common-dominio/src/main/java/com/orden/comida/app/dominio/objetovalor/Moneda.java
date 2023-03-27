@@ -6,6 +6,7 @@ import java.util.Objects;
 
 public class Moneda {
     private final BigDecimal monto;
+    public static final Moneda ZERO = new Moneda(BigDecimal.ZERO);
 
     public Moneda(BigDecimal monto) {
         this.monto = monto;
@@ -37,10 +38,10 @@ public class Moneda {
     public Moneda multiplicar(Moneda moneda) {
         return new Moneda(setScale(this.monto.multiply(moneda.getMonto())));
     }
-    private BigDecimal setScale(BigDecimal input){
+
+    private BigDecimal setScale(BigDecimal input) {
         return input.setScale(2, RoundingMode.HALF_EVEN);
     }
-
 
 
     @Override

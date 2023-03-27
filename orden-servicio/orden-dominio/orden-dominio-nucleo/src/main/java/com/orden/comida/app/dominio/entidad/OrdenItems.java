@@ -19,6 +19,12 @@ public class OrdenItems extends EntidadBase<IDOrdenItem> {
         subtotal = builder.subtotal;
     }
 
+    boolean precioValido (){
+        return precio.esMayorQueCero() && precio.equals(producto.getPrecio()) && precio.multiplicar(precio).equals(subtotal);
+
+
+    }
+
 
     public IDOrden getIdOrden() {
         return idOrden;
@@ -42,6 +48,11 @@ public class OrdenItems extends EntidadBase<IDOrdenItem> {
 
     public Moneda getSubtotal() {
         return subtotal;
+    }
+
+    public void inicializarOrdenItems(IDOrden idOrden, IDOrdenItem idOrdenItem) {
+        this.idOrden = idOrden;
+        super.setId(idOrdenItem);
     }
 
     public static final class Builder {

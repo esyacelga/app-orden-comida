@@ -1,5 +1,6 @@
 package com.orden.comida.app.dominio.entidad;
 
+import com.orden.comida.app.dominio.exception.ExceptionDominioOrden;
 import com.orden.comida.app.dominio.objetovalor.*;
 
 import java.util.List;
@@ -22,7 +23,45 @@ public class Orden extends RaizAgregada<IDOrden> {
         inicializadorOrdenItems();
     }
 
+    public void validarOrden() {
+        validarOrdenInicial();
+        validarPrecioTotal();
+        validarPrecioItem();
+    }
+
+    private void validarPrecioItem() {
+        Moneda ordenItemTotal = itemsList.stream().map(ordenItems -> {
+            validarItemPrecio(ordenItems);
+            return ordenItems.getSubtotal();
+        }).reduce(Moneda.ZERO, Moneda::sumar);
+        if (!price.equals(ordenItemTotal)){
+            throw new ExceptionDominioOrden("Precio item incorrecto");
+        }
+    }
+
+    private void validarItemPrecio(OrdenItems ordenItems) {
+        if (!ordenItems.precioValido()){
+            throw new ExceptionDominioOrden("Precio invalido");
+        }
+    }
+
+    private void validarPrecioTotal() {
+        if (price == null || !price.esMayorQueCero()) {
+            throw new ExceptionDominioOrden("Oden incorrecta");
+        }
+    }
+
+    private void validarOrdenInicial() {
+        if (estadoOrden != null || getId() != null) {
+            throw new ExceptionDominioOrden("La orden no es correcta por inicializacion");
+        }
+    }
+
     private void inicializadorOrdenItems() {
+        long itemId = 1;
+        for (OrdenItems ordenItems : itemsList) {
+            ordenItems.inicializarOrdenItems(super.getId(), new IDOrdenItem(itemId++));
+        }
 
     }
 

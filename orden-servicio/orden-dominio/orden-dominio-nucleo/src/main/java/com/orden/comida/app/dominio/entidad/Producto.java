@@ -1,6 +1,5 @@
 package com.orden.comida.app.dominio.entidad;
 
-import com.orden.comida.app.dominio.entidad.EntidadBase;
 import com.orden.comida.app.dominio.objetovalor.IDProducto;
 
 public class Producto extends EntidadBase<IDProducto> {
@@ -25,6 +24,11 @@ public class Producto extends EntidadBase<IDProducto> {
     }
 
     public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+
+    public void actualizarNombrePrecio(String nombre, String precio) {
+        this.nombre = nombre;
         this.precio = precio;
     }
 }

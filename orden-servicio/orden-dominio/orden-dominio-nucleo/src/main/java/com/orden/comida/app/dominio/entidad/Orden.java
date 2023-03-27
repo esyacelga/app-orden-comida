@@ -23,6 +23,49 @@ public class Orden extends RaizAgregada<IDOrden> {
         inicializadorOrdenItems();
     }
 
+
+    public void pagar() {
+        if (estadoOrden != EstadoOrden.PENDIENTE) {
+            throw new ExceptionDominioOrden("Orden no posee el estado  pagado correcto");
+
+        }
+        estadoOrden = EstadoOrden.PAGADO;
+    }
+
+    public void approve() {
+        if (estadoOrden != EstadoOrden.PAGADO) {
+            throw new ExceptionDominioOrden("Orden no posee el estado aprovar correcto");
+        }
+        estadoOrden = EstadoOrden.APROVADO;
+    }
+
+    public void inicializarCancelacion(List<String> mensajesError) {
+        if (estadoOrden != EstadoOrden.PAGADO) {
+            throw new ExceptionDominioOrden("Orden no posee el estado  pagado correcto");
+        }
+        estadoOrden = EstadoOrden.CANCELANDO;
+        actualizarMensajesError(mensajesError);
+
+    }
+
+    private void actualizarMensajesError(List<String> mensajesError) {
+        if (this.mensajesError != null && mensajesError != null) {
+            this.mensajesError.addAll(mensajesError.stream().filter(mensaje -> !mensaje.isEmpty()).toList());
+        }
+        if (this.mensajesError == null) {
+            this.mensajesError = mensajesError;
+        }
+    }
+
+    public void cancelar(List<String> mensajesError) {
+        if (!(estadoOrden == EstadoOrden.CANCELANDO || estadoOrden == EstadoOrden.PENDIENTE)) {
+            throw new ExceptionDominioOrden("Orden no posee el estado  pagado correcto");
+        }
+        estadoOrden = EstadoOrden.CANCELADO;
+        actualizarMensajesError(mensajesError);
+    }
+
+
     public void validarOrden() {
         validarOrdenInicial();
         validarPrecioTotal();
@@ -34,13 +77,13 @@ public class Orden extends RaizAgregada<IDOrden> {
             validarItemPrecio(ordenItems);
             return ordenItems.getSubtotal();
         }).reduce(Moneda.ZERO, Moneda::sumar);
-        if (!price.equals(ordenItemTotal)){
+        if (!price.equals(ordenItemTotal)) {
             throw new ExceptionDominioOrden("Precio item incorrecto");
         }
     }
 
     private void validarItemPrecio(OrdenItems ordenItems) {
-        if (!ordenItems.precioValido()){
+        if (!ordenItems.precioValido()) {
             throw new ExceptionDominioOrden("Precio invalido");
         }
     }
